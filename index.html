@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>ODST Engineering Portfolio | Embedded • CubeSat • CV Drone</title>
+  <title>NOBLE Team // Advanced Systems Division</title>
   <!-- Google Fonts + Font Awesome -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * {
@@ -16,26 +16,51 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: radial-gradient(circle at 10% 20%, #0a0f1e, #03050b);
-      color: #eef4ff;
+      background: radial-gradient(ellipse at 20% 30%, #0a0f1a 0%, #020408 100%);
+      color: #e6eefc;
       line-height: 1.5;
       scroll-behavior: smooth;
+      position: relative;
     }
 
-    /* GLASS NAVIGATION (ODST THEME) */
+    /* Halo Reach style scanlines + vignette */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      background: repeating-linear-gradient(0deg, rgba(0, 20, 40, 0.15) 0px, rgba(0, 20, 40, 0.15) 2px, transparent 2px, transparent 6px);
+      z-index: 999;
+    }
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      background: radial-gradient(circle at center, transparent 50%, rgba(0,0,0,0.6) 90%);
+      z-index: 999;
+    }
+
+    /* GLASS NAVIGATION — REACH UI */
     .glass-nav {
       position: sticky;
       top: 0;
-      backdrop-filter: blur(12px);
-      background: rgba(8, 12, 25, 0.55);
-      border-bottom: 1px solid rgba(80, 140, 210, 0.35);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      backdrop-filter: blur(16px) saturate(180%);
+      background: rgba(2, 6, 18, 0.65);
+      border-bottom: 2px solid rgba(80, 160, 255, 0.5);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255,255,255,0.05);
       z-index: 1000;
-      padding: 0.9rem 2rem;
+      padding: 0.8rem 2rem;
     }
 
     .nav-container {
-      max-width: 1300px;
+      max-width: 1400px;
       margin: 0 auto;
       display: flex;
       flex-wrap: wrap;
@@ -44,72 +69,79 @@
     }
 
     .logo {
-      font-size: 1.7rem;
+      font-family: 'Orbitron', monospace;
+      font-size: 1.8rem;
       font-weight: 800;
-      letter-spacing: -0.5px;
-      background: linear-gradient(135deg, #c0e0ff, #3e7bc2);
+      letter-spacing: 2px;
+      background: linear-gradient(135deg, #c8e2ff, #3e7bc2, #1a4470);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      text-shadow: 0 0 5px rgba(0,160,255,0.3);
+      text-shadow: 0 0 8px #2f6eb0;
     }
     .logo span {
-      font-size: 0.9rem;
+      font-size: 0.8rem;
       background: none;
       -webkit-background-clip: unset;
       background-clip: unset;
-      color: #8aaae0;
+      color: #6e9ed6;
+      letter-spacing: 1px;
     }
 
     .nav-links {
       display: flex;
-      gap: 1.2rem;
+      gap: 0.8rem;
       flex-wrap: wrap;
       list-style: none;
     }
 
     .nav-links a {
       text-decoration: none;
-      color: #dee9fc;
+      font-family: 'Orbitron', monospace;
       font-weight: 500;
-      padding: 0.5rem 1rem;
-      border-radius: 40px;
+      color: #bfd9ff;
+      padding: 0.5rem 1.2rem;
+      border-radius: 4px;
       transition: all 0.2s ease;
-      font-size: 0.95rem;
-      letter-spacing: 0.3px;
-      background: rgba(20, 35, 65, 0.3);
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      background: rgba(10, 25, 45, 0.5);
       backdrop-filter: blur(4px);
+      border: 1px solid rgba(60, 130, 210, 0.4);
     }
 
     .nav-links a:hover, .nav-links a.active {
-      background: rgba(50, 120, 210, 0.6);
+      background: #2a6eb0cc;
       color: white;
-      box-shadow: 0 0 8px #2f7bc0;
-      border: 1px solid rgba(100, 180, 255, 0.6);
+      box-shadow: 0 0 12px #1f8eff;
+      border-color: #7fc9ff;
+      text-shadow: 0 0 3px white;
     }
 
-    /* main container + page transitions */
+    /* main container */
     .page-container {
-      max-width: 1300px;
+      max-width: 1400px;
       margin: 0 auto;
       padding: 2rem 2rem 4rem;
+      position: relative;
+      z-index: 10;
     }
 
     .page {
       display: none;
-      animation: fadeUp 0.3s ease-out;
+      animation: fadeSlideUp 0.4s ease-out;
     }
 
     .active-page {
       display: block;
     }
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(12px);}
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(18px);}
       to { opacity: 1; transform: translateY(0);}
     }
 
-    /* HERO SECTION */
+    /* HERO SECTION — REACH SPARTAN STYLE */
     .hero {
       display: flex;
       flex-wrap: wrap;
@@ -117,101 +149,108 @@
       align-items: center;
       gap: 2rem;
       margin: 2rem 0 3rem;
-      background: rgba(10, 18, 30, 0.45);
-      backdrop-filter: blur(8px);
-      border-radius: 2.5rem;
-      padding: 2.5rem;
-      border: 1px solid rgba(50, 110, 180, 0.4);
-      box-shadow: 0 20px 35px -12px black;
+      background: rgba(2, 10, 22, 0.55);
+      backdrop-filter: blur(12px);
+      border-radius: 2rem;
+      padding: 2.8rem;
+      border: 1px solid rgba(0, 180, 255, 0.45);
+      box-shadow: 0 20px 35px -12px black, inset 0 1px 0 rgba(255,255,255,0.05);
     }
     .hero-content {
       flex: 1;
     }
     .hero-badge {
-      font-size: 0.8rem;
-      background: #1e2b46;
+      font-family: 'Orbitron', monospace;
+      font-size: 0.7rem;
+      background: #14283e;
       display: inline-block;
-      padding: 0.2rem 1rem;
+      padding: 0.3rem 1.2rem;
       border-radius: 20px;
-      letter-spacing: 1px;
+      letter-spacing: 2px;
       margin-bottom: 1rem;
-      border-left: 3px solid #3f9eff;
+      border-left: 4px solid #3f9eff;
+      color: #aad0ff;
     }
     .hero h1 {
-      font-size: 3.2rem;
+      font-family: 'Orbitron', monospace;
+      font-size: 3.6rem;
       font-weight: 800;
       line-height: 1.2;
-      background: linear-gradient(to right, #fff, #7cb8ff);
+      background: linear-gradient(135deg, #ffffff, #6bb5ff, #2c6eb0);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
+      text-shadow: 0 0 5px #0080ff;
     }
     .hero p {
       margin: 1.5rem 0;
       font-size: 1.1rem;
-      opacity: 0.9;
+      opacity: 0.92;
     }
     .cta-btn {
-      background: linear-gradient(95deg, #0f3b6f, #1b60b0);
+      background: linear-gradient(135deg, #0f3b6f, #1b60b0);
       border: none;
-      padding: 0.9rem 2rem;
+      padding: 0.9rem 2.2rem;
       border-radius: 40px;
+      font-family: 'Orbitron', monospace;
       font-weight: bold;
-      font-size: 1rem;
+      font-size: 0.9rem;
       color: white;
       cursor: pointer;
-      box-shadow: 0 4px 14px #0055aa50;
+      box-shadow: 0 4px 14px #0055aa60;
       transition: 0.2s;
       display: inline-flex;
       align-items: center;
       gap: 10px;
+      letter-spacing: 1px;
     }
     .cta-btn:hover {
       transform: scale(1.02);
-      background: linear-gradient(95deg, #1f558f, #2874ce);
-      box-shadow: 0 0 12px #2277ff;
-    }
-    .hero-visual {
-      flex: 0.8;
-      text-align: center;
+      background: linear-gradient(135deg, #1f558f, #2874ce);
+      box-shadow: 0 0 16px #3388ff;
     }
     .hero-visual i {
-      font-size: 8rem;
-      color: #3478c7;
-      filter: drop-shadow(0 0 8px #0055aa);
+      font-size: 7rem;
+      color: #3c86db;
+      filter: drop-shadow(0 0 12px #0066cc);
+      margin: 0 10px;
     }
 
-    /* cards / services grid */
+    /* section styling */
     .section-title {
-      font-size: 2rem;
+      font-family: 'Orbitron', monospace;
+      font-size: 1.8rem;
       font-weight: 700;
       margin: 2.5rem 0 1.5rem;
       border-left: 5px solid #3f9eff;
       padding-left: 1rem;
+      letter-spacing: -0.5px;
+      text-transform: uppercase;
     }
+
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 2rem;
     }
     .service-card {
-      background: rgba(15, 25, 45, 0.6);
+      background: rgba(5, 15, 30, 0.65);
       backdrop-filter: blur(8px);
       border-radius: 1.8rem;
       padding: 1.8rem;
-      border: 1px solid rgba(70, 130, 200, 0.4);
+      border: 1px solid rgba(60, 140, 220, 0.5);
       transition: 0.2s;
     }
     .service-card i {
-      font-size: 2.3rem;
+      font-size: 2.4rem;
       color: #5d9eff;
       margin-bottom: 1rem;
     }
 
     /* contact form */
     .contact-form {
-      background: rgba(0, 0, 0, 0.45);
-      backdrop-filter: blur(6px);
+      background: rgba(0, 5, 15, 0.7);
+      backdrop-filter: blur(8px);
       border-radius: 2rem;
       padding: 2rem;
       margin: 2rem 0;
@@ -222,8 +261,8 @@
     }
     input, textarea {
       width: 100%;
-      background: #101a2c;
-      border: 1px solid #2d4a78;
+      background: #0a1428;
+      border: 1px solid #2d5a88;
       padding: 0.8rem 1rem;
       border-radius: 1.5rem;
       color: white;
@@ -236,20 +275,22 @@
       border-radius: 2rem;
       font-weight: bold;
       cursor: pointer;
+      font-family: 'Orbitron', monospace;
     }
 
-    /* Embedded Software TABS SECTION (page1) */
+    /* embedded tabs */
     .tabs-container {
-      background: rgba(12, 22, 38, 0.7);
+      background: rgba(2, 12, 28, 0.75);
       border-radius: 2rem;
-      padding: 1rem;
+      padding: 1.2rem;
       margin-top: 1rem;
+      border: 1px solid #2f608f;
     }
     .tabs-header {
       display: flex;
       flex-wrap: wrap;
       gap: 0.8rem;
-      border-bottom: 1px solid #2a4a77;
+      border-bottom: 1px solid #2a5a85;
       padding-bottom: 1rem;
     }
     .tab-btn {
@@ -261,15 +302,16 @@
       border-radius: 40px;
       cursor: pointer;
       transition: 0.2s;
+      font-family: 'Orbitron', monospace;
     }
     .tab-btn.active-tab {
       background: #1f5a9e;
       color: white;
-      box-shadow: 0 2px 8px #0f3f6b;
+      box-shadow: 0 2px 12px #0f3f6b;
     }
     .tab-content {
       padding: 1.8rem;
-      background: rgba(0,0,0,0.2);
+      background: rgba(0,0,0,0.3);
       border-radius: 1.5rem;
       margin-top: 1rem;
     }
@@ -280,7 +322,7 @@
       display: block;
     }
 
-    /* card grid for CubeSat & Quadcopter pages */
+    /* tech grids */
     .tech-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
@@ -288,7 +330,7 @@
       margin: 2rem 0;
     }
     .tech-card {
-      background: rgba(0,0,0,0.4);
+      background: rgba(0, 0, 0, 0.5);
       backdrop-filter: blur(5px);
       border-radius: 1.5rem;
       padding: 1.6rem;
@@ -303,12 +345,13 @@
       border-top: 1px solid #1e3755;
       margin-top: 2rem;
       font-size: 0.8rem;
+      font-family: 'Orbitron', monospace;
     }
     @media (max-width: 780px) {
       .nav-container { flex-direction: column; gap: 1rem; }
       .hero { flex-direction: column; text-align: center; }
-      .hero h1 { font-size: 2.4rem; }
-      .page-container { padding: 1.2rem; }
+      .hero h1 { font-size: 2.2rem; }
+      .page-container { padding: 1rem; }
     }
   </style>
 </head>
@@ -316,12 +359,12 @@
 
 <nav class="glass-nav">
   <div class="nav-container">
-    <div class="logo">ODST <span>// ENGINEERING</span></div>
+    <div class="logo">NOBLE // <span>ADVANCED SYSTEMS</span></div>
     <ul class="nav-links">
-      <li><a href="#" data-page="home" class="nav-link active">HOME</a></li>
-      <li><a href="#" data-page="embedded" class="nav-link">EMBEDDED</a></li>
+      <li><a href="#" data-page="home" class="nav-link active">TAC-OPS</a></li>
+      <li><a href="#" data-page="embedded" class="nav-link">FIRMWARE</a></li>
       <li><a href="#" data-page="cubesat" class="nav-link">CUBESAT</a></li>
-      <li><a href="#" data-page="quadcopter" class="nav-link">QUAD-COPTER</a></li>
+      <li><a href="#" data-page="quadcopter" class="nav-link">CV DRONE</a></li>
     </ul>
   </div>
 </nav>
@@ -331,28 +374,26 @@
   <div id="home-page" class="page active-page">
     <div class="hero">
       <div class="hero-content">
-        <div class="hero-badge"><i class="fas fa-shield-halos"></i> HELLJUMPER ENGINEER</div>
-        <h1>Orbital Drop Shock <br>Systems & AI Vision</h1>
-        <p>ODST-grade embedded firmware • Real‑time control • CubeSat bus architecture • Autonomous quad‑copter with computer vision.</p>
-        <button class="cta-btn" id="heroCtaBtn">DEPLOY MISSION <i class="fas fa-angle-right"></i></button>
+        <div class="hero-badge"><i class="fas fa-helmet-battle"></i> NOBLE TEAN • TACTICAL ENGINEERING</div>
+        <h1>REACH // FALL <br>SYSTEMS INTEGRITY</h1>
+        <p>ODST-grade embedded firmware • Real‑time control • CubeSat bus architecture • Autonomous quad‑copter with computer vision. Prepare for full-spectrum dominance.</p>
+        <button class="cta-btn" id="heroCtaBtn">DEPLOY MISSION <i class="fas fa-angle-double-right"></i></button>
       </div>
       <div class="hero-visual">
         <i class="fas fa-microchip"></i>
-        <i class="fas fa-satellite-dish" style="font-size: 4rem; margin-left: 10px;"></i>
+        <i class="fas fa-satellite-dish" style="font-size: 4rem;"></i>
       </div>
     </div>
 
-    <!-- SERVICES SECTION -->
-    <h2 class="section-title"><i class="fas fa-cogs"></i> Combat Engineering Services</h2>
+    <h2 class="section-title"><i class="fas fa-cogs"></i> COMBAT ENGINEERING SUITE</h2>
     <div class="services-grid">
-      <div class="service-card"><i class="fas fa-code"></i><h3>Embedded RTOS</h3><p>FreeRTOS, Zephyr, driver development & low‑level optimization.</p></div>
-      <div class="service-card"><i class="fas fa-satellite"></i><h3>CubeSat OBC</h3><p>Flight software, CAN/SPI, telemetry, and fault‑tolerant design.</p></div>
-      <div class="service-card"><i class="fas fa-eye"></i><h3>CV on Drone</h3><p>YOLO, OpenCV, obstacle avoidance & object tracking for quad‑copter.</p></div>
-      <div class="service-card"><i class="fas fa-bolt"></i><h3>PCB & Firmware</h3><p>STM32, ESP32, sensor fusion & high‑performance motor control.</p></div>
+      <div class="service-card"><i class="fas fa-code"></i><h3>Embedded RTOS</h3><p>FreeRTOS, Zephyr, driver dev & low‑level optimization.</p></div>
+      <div class="service-card"><i class="fas fa-satellite"></i><h3>CubeSat OBC</h3><p>Flight software, CAN/SPI, telemetry, fault‑tolerant.</p></div>
+      <div class="service-card"><i class="fas fa-eye"></i><h3>CV on Drone</h3><p>YOLO, OpenCV, obstacle avoidance & object tracking.</p></div>
+      <div class="service-card"><i class="fas fa-bolt"></i><h3>PCB & Firmware</h3><p>STM32, ESP32, sensor fusion & motor control.</p></div>
     </div>
 
-    <!-- CONTACT FORM -->
-    <h2 class="section-title"><i class="fas fa-comment"></i> Transmit Encrypted Comms</h2>
+    <h2 class="section-title"><i class="fas fa-comment"></i> ENCRYPTED COMMS</h2>
     <div class="contact-form">
       <form id="contactForm">
         <div class="form-group"><input type="text" placeholder="ODTAG / Callsign" id="name" required></div>
@@ -364,57 +405,57 @@
     </div>
   </div>
 
-  <!-- EMBEDDED SOFTWARE PAGE (multiple tabs) -->
+  <!-- EMBEDDED PAGE with TABS -->
   <div id="embedded-page" class="page">
-    <h2 class="section-title"><i class="fas fa-terminal"></i> Embedded Software Engineering Concepts</h2>
+    <h2 class="section-title"><i class="fas fa-terminal"></i> Embedded Systems // REACH PROTOCOLS</h2>
     <div class="tabs-container">
       <div class="tabs-header">
-        <button class="tab-btn active-tab" data-tab="tab1">🔧 RTOS & Scheduling</button>
-        <button class="tab-btn" data-tab="tab2">📡 Memory & DMA</button>
-        <button class="tab-btn" data-tab="tab3">⚡ Low‑Power Design</button>
-        <button class="tab-btn" data-tab="tab4">🧠 HAL & Driver Model</button>
+        <button class="tab-btn active-tab" data-tab="tab1">🔧 RTOS & SCHEDULING</button>
+        <button class="tab-btn" data-tab="tab2">📡 MEMORY & DMA</button>
+        <button class="tab-btn" data-tab="tab3">⚡ LOW-POWER</button>
+        <button class="tab-btn" data-tab="tab4">🧠 HAL & DRIVERS</button>
       </div>
       <div class="tab-content">
         <div id="tab1" class="tab-pane active-pane">
-          <h3>Real‑Time Operating System (RTOS) Concepts</h3>
-          <p>Preemptive multitasking, task priorities, semaphores, mutexes, and message queues. Critical for deterministic behaviour in flight control & sensor fusion. ODST approach: minimize jitter, guarantee deadlines (rate-monotonic scheduling).</p>
-          <code style="background:#00000066; display:inline-block; margin-top:10px; padding:8px;">vTaskDelayUntil() • xSemaphoreTake() • event groups</code>
+          <h3>Real‑Time OS (RTOS) — SPARTAN-TIME CRITICAL</h3>
+          <p>Preemptive multitasking, priority inheritance, mutex, queues. Deterministic behaviour for flight control & sensor fusion. ODST approach: minimize jitter, guarantee deadlines using rate-monotonic scheduling & thread analysis.</p>
+          <code style="background:#00000088; display:inline-block; margin-top:10px; padding:8px;">vTaskDelayUntil() • xSemaphoreTake() • event groups</code>
         </div>
         <div id="tab2" class="tab-pane">
           <h3>Memory Management & DMA</h3>
-          <p>Efficiently moving data between peripherals (ADC, I2S, SPI) without CPU overhead. Memory sections: .bss, .data, stack vs heap. Avoid fragmentation in constrained devices. DMA double-buffering for high‑throughput computer vision pipelines.</p>
+          <p>Efficient data movement between peripherals (ADC, I2S, SPI) without CPU overhead. Memory sections: .bss, .data, stack vs heap. DMA double-buffering for high‑throughput vision pipelines.</p>
         </div>
         <div id="tab3" class="tab-pane">
-          <h3>Low‑Power & Energy‑Aware Firmware</h3>
-          <p>Sleep modes (stop, standby), wake-up sources, and DVFS. For CubeSat & drones, power budgeting is paramount. Use of low-power timers, event‑driven architecture, and efficient peripheral gating.</p>
+          <h3>Low‑Power Energy-Aware Firmware</h3>
+          <p>Sleep modes (stop, standby), wake-up sources, DVFS. For CubeSat & drones, power budgeting is paramount. Event‑driven architecture with peripheral gating.</p>
         </div>
         <div id="tab4" class="tab-pane">
-          <h3>Hardware Abstraction Layer (HAL) & Drivers</h3>
-          <p>Portable firmware using HAL (STM32Cube, Zephyr). Writing peripheral drivers: I2C, CAN, UART, PWM with callback-based IRQ management. Separation of business logic from hardware specifics.</p>
+          <h3>Hardware Abstraction Layer & Drivers</h3>
+          <p>Portable firmware using HAL (STM32Cube, Zephyr). Writing peripheral drivers: I2C, CAN, UART, PWM with callback-based IRQ management. Separation of business logic from hardware.</p>
         </div>
       </div>
     </div>
-    <div class="tech-grid" style="margin-top:1rem;">
-      <div class="tech-card"><i class="fas fa-microchip badge-icon"></i><h3>Toolchain</h3><p>GCC, CMake, OpenOCD, J-Link debugging, static analysis.</p></div>
-      <div class="tech-card"><i class="fas fa-chart-line badge-icon"></i><h3>Testing strategy</h3><p>HIL, SIL, unit testing with CppUTest, QEMU emulation.</p></div>
+    <div class="tech-grid">
+      <div class="tech-card"><i class="fas fa-microchip badge-icon"></i><h3>Toolchain</h3><p>GCC, CMake, OpenOCD, J-Link, static analysis.</p></div>
+      <div class="tech-card"><i class="fas fa-chart-line badge-icon"></i><h3>Testing</h3><p>HIL, SIL, unit testing with CppUTest, QEMU emulation.</p></div>
     </div>
   </div>
 
   <!-- CUBESAT PAGE -->
   <div id="cubesat-page" class="page">
-    <h2 class="section-title"><i class="fas fa-satellite"></i> CubeSat: Orbital Edge Computing</h2>
+    <h2 class="section-title"><i class="fas fa-satellite"></i> CubeSat // Orbital Warfare</h2>
     <div class="hero" style="padding:1.5rem;">
       <div><i class="fas fa-space-shuttle" style="font-size: 4rem;"></i></div>
       <div><p>1U/3U architecture • On-board computer (STM32H7 / ARM Cortex-M7) • EPS with MPPT • Store-and-forward telemetry • Radiation-tolerant design patterns.</p></div>
     </div>
     <div class="tech-grid">
-      <div class="tech-card"><i class="fas fa-cogs"></i><h3>OBC + ADCS</h3><p>Attitude determination using magnetometer, gyro, sun sensors. Reaction wheels / magnetorquers control loops implemented in embedded C.</p></div>
-      <div class="tech-card"><i class="fas fa-broadcast-tower"></i><h3>Communications</h3><p>UHF/VHF transceiver, AX.25 framing, CSP protocol, LoRa backup downlink. Frame error correction.</p></div>
+      <div class="tech-card"><i class="fas fa-cogs"></i><h3>OBC + ADCS</h3><p>Attitude determination using magnetometer, gyro, sun sensors. Reaction wheels / magnetorquers control loops in embedded C.</p></div>
+      <div class="tech-card"><i class="fas fa-broadcast-tower"></i><h3>Communications</h3><p>UHF/VHF transceiver, AX.25 framing, CSP protocol, LoRa backup downlink. FEC.</p></div>
       <div class="tech-card"><i class="fas fa-database"></i><h3>Flight Software</h3><p>State machine (Safe, Detumble, Nominal, Standby), fault detection, FDIR with watchdog & memory scrubbing.</p></div>
     </div>
   </div>
 
-  <!-- QUADCOPTER (with CV focus) PAGE -->
+  <!-- QUADCOPTER + CV PAGE -->
   <div id="quadcopter-page" class="page">
     <h2 class="section-title"><i class="fas fa-drone"></i> Quad‑Copter: Vision‑Aided Navigation</h2>
     <div class="hero" style="padding:1.5rem;">
@@ -426,18 +467,18 @@
       <div class="tech-card"><i class="fas fa-exchange-alt"></i><h3>Flight Controller Fusion</h3><p>PX4 / ArduPilot with companion computer MAVLink bridge. Sensor fusion: IMU + optical flow + GPS-denied navigation using CV.</p></div>
       <div class="tech-card"><i class="fas fa-microchip"></i><h3>Embedded CV Optimizations</h3><p>NEON intrinsics, GPU shaders, model quantization (INT8), edge TPU acceleration for 4K real‑time analysis.</p></div>
     </div>
-    <div class="contact-form" style="background: #0a1424;">
+    <div class="contact-form" style="background: #0a101e;">
       <p style="font-style:italic">🚁 Demo: autonomous person following, package delivery, and obstacle avoidance in cluttered environments.</p>
     </div>
   </div>
 
   <footer>
-    <p>© 2589 ODST Engineering Division — Helljumper protocols active. <i class="fas fa-skull"></i> Embedded • Space • Vision</p>
+    <p>© 2589 NOBLE Team — Reach Defense Protocol // Embedded • Space • Vision <i class="fas fa-skull-crossbones"></i></p>
   </footer>
 </div>
 
 <script>
-  // -------- PAGE NAVIGATION ----------
+  // PAGE SWITCHING
   const pages = {
     home: document.getElementById('home-page'),
     embedded: document.getElementById('embedded-page'),
@@ -447,13 +488,11 @@
   const navLinks = document.querySelectorAll('.nav-link');
 
   function switchPage(pageId) {
-    // hide all pages
     Object.values(pages).forEach(page => {
       if(page) page.classList.remove('active-page');
     });
     if(pages[pageId]) pages[pageId].classList.add('active-page');
 
-    // update active nav style
     navLinks.forEach(link => {
       const linkPage = link.getAttribute('data-page');
       if(linkPage === pageId) {
@@ -462,7 +501,6 @@
         link.classList.remove('active');
       }
     });
-    // scroll to top when changing page
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
@@ -474,7 +512,7 @@
     });
   });
 
-  // Hero CTA button: scrolls to contact form if on home page, else switch to home and then scroll.
+  // HERO CTA
   const heroBtn = document.getElementById('heroCtaBtn');
   if(heroBtn) {
     heroBtn.addEventListener('click', () => {
@@ -491,7 +529,7 @@
     });
   }
 
-  // ---------- Embedded TABS functionality ----------
+  // TABS
   const tabBtns = document.querySelectorAll('.tab-btn');
   const panes = document.querySelectorAll('.tab-pane');
   if(tabBtns.length) {
@@ -515,7 +553,7 @@
     });
   }
 
-  // ----- Contact form submission with fake "encrypted" feedback -----
+  // CONTACT FORM
   const contactForm = document.getElementById('contactForm');
   const formFeedback = document.getElementById('formFeedback');
   if(contactForm) {
@@ -528,18 +566,13 @@
         formFeedback.innerHTML = '<span style="color:#ffad80;">❌ Transmission incomplete: fill all fields, soldier.</span>';
         return;
       }
-      // simulate mission transmission
       formFeedback.innerHTML = '<span style="color:#8effbc;">✅ Encrypted message sent to ONI relay. ODST will respond within 24h.</span>';
       contactForm.reset();
       setTimeout(() => { formFeedback.innerHTML = ''; }, 4000);
     });
   }
 
-  // Additional cleanup / dynamic active highlight based on navigation after page load (consistency)
-  // Ensure that if some internal links toggles, the correct page stays in sync.
-  // Override default behavior for any hash change (optional)
   window.addEventListener('load', () => {
-    // ensure embedded tab default active state if somehow lost
     const activeTab = document.querySelector('.tab-btn.active-tab');
     if(activeTab && pages.embedded && pages.embedded.classList.contains('active-page')) {
       const tabVal = activeTab.getAttribute('data-tab');
@@ -549,15 +582,10 @@
         if(activePane) activePane.classList.add('active-pane');
       }
     }
-    // set default home if needed (active-page already home on load)
     if(!pages.home.classList.contains('active-page') && !pages.embedded.classList.contains('active-page') && !pages.cubesat.classList.contains('active-page') && !pages.quadcopter.classList.contains('active-page')) {
       switchPage('home');
     }
   });
-
-  // small addition: if we click service cards or internal anything doesn't affect routing.
-  // Also style ODST themed interactive.
-  console.log("ODST UI ready — Forerunner tech integrated.");
 </script>
 </body>
 </html>
